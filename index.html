@@ -50,13 +50,15 @@
       inset: 0;
       z-index: -1;
       pointer-events: none;
-      background: radial-gradient(circle at 86% 8%, rgba(111, 188, 132, .22), transparent 25%), radial-gradient(circle at 4% 72%, rgba(42, 137, 91, .13), transparent 23%);
+      background: radial-gradient(circle at 86% 8%, rgba(111, 188, 132, .3), transparent 25%), radial-gradient(circle at 4% 72%, rgba(42, 137, 91, .18), transparent 23%), radial-gradient(circle at 52% 44%, rgba(177, 224, 184, .14), transparent 30%);
     }
 
     .site-header {
       background: rgba(244, 248, 243, .9);
       border-bottom-color: rgba(23, 59, 53, .12);
       box-shadow: 0 8px 24px rgba(23, 59, 53, .05);
+      backdrop-filter: blur(24px) saturate(145%);
+      -webkit-backdrop-filter: blur(24px) saturate(145%);
     }
 
     .brand-mark {
@@ -94,6 +96,12 @@
       box-shadow: -40px 40px 90px rgba(47, 143, 104, .16);
     }
 
+    .hero-copy,
+    .section-heading {
+      position: relative;
+      z-index: 1;
+    }
+
     h1 {
       max-width: 650px;
       font-weight: 700;
@@ -117,10 +125,10 @@
       position: relative;
       border-radius: 10px 10px 10px 2px;
       border-color: rgba(255, 255, 255, .8);
-      background: linear-gradient(145deg, rgba(255, 255, 255, .8), rgba(219, 242, 224, .54));
+      background: linear-gradient(145deg, rgba(255, 255, 255, .78), rgba(207, 237, 214, .48));
       box-shadow: var(--shadow), inset 0 1px 0 rgba(255, 255, 255, .9);
-      backdrop-filter: blur(18px) saturate(125%);
-      -webkit-backdrop-filter: blur(18px) saturate(125%);
+      backdrop-filter: blur(28px) saturate(145%);
+      -webkit-backdrop-filter: blur(28px) saturate(145%);
     }
 
     .offer-card:before {
@@ -149,10 +157,10 @@
 
     .stats {
       box-shadow: 0 10px 30px rgba(16, 44, 59, .04);
-      background: rgba(238, 248, 239, .72);
+      background: rgba(220, 240, 224, .68);
       border-color: rgba(75, 145, 98, .2);
-      backdrop-filter: blur(20px) saturate(125%);
-      -webkit-backdrop-filter: blur(20px) saturate(125%);
+      backdrop-filter: blur(24px) saturate(140%);
+      -webkit-backdrop-filter: blur(24px) saturate(140%);
     }
 
     .stat {
@@ -185,10 +193,10 @@
       padding: 28px;
       border-radius: 8px;
       border-color: rgba(255, 255, 255, .84);
-      background: linear-gradient(145deg, rgba(255, 255, 255, .74), rgba(211, 238, 218, .52));
+      background: linear-gradient(145deg, rgba(255, 255, 255, .68), rgba(191, 229, 200, .5));
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, .82);
-      backdrop-filter: blur(14px) saturate(115%);
-      -webkit-backdrop-filter: blur(14px) saturate(115%);
+      backdrop-filter: blur(22px) saturate(135%);
+      -webkit-backdrop-filter: blur(22px) saturate(135%);
       transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
     }
 
@@ -205,7 +213,7 @@
     .process-section {
       position: relative;
       overflow: hidden;
-      background: linear-gradient(120deg, #17483b, #21604a 52%, #2d7152);
+      background: linear-gradient(120deg, #123e33, #1d5a43 45%, #3b8158);
     }
 
     .process-section:before {
@@ -230,6 +238,12 @@
       background: rgba(71, 142, 93, .42);
     }
 
+    .steps {
+      background: rgba(141, 211, 155, .25);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
     .step h3 {
       margin-top: 62px;
     }
@@ -243,14 +257,17 @@
       border: 1px solid rgba(255, 255, 255, .84);
       background: linear-gradient(145deg, rgba(255, 255, 255, .78), rgba(222, 244, 224, .58));
       box-shadow: 0 20px 45px rgba(23, 59, 53, .14), inset 0 1px 0 rgba(255, 255, 255, .9);
-      backdrop-filter: blur(24px) saturate(135%);
-      -webkit-backdrop-filter: blur(24px) saturate(135%);
+      backdrop-filter: blur(30px) saturate(145%);
+      -webkit-backdrop-filter: blur(30px) saturate(145%);
     }
 
     input,
     select {
-      background: rgba(248, 252, 248, .74);
-      border-color: rgba(47, 143, 104, .2);
+      background: rgba(235, 249, 237, .64);
+      border-color: rgba(47, 143, 104, .28);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
     }
 
     input:hover,
