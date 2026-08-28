@@ -76,25 +76,27 @@
 
     .nav a {
       position: relative;
-      padding: 10px 0;
-      transition: color .3s ease;
+      padding: 10px 15px;
+      border: 1px solid rgba(255, 255, 255, .72);
+      border-radius: 14px;
+      background: linear-gradient(145deg, rgba(255, 255, 255, .7), rgba(214, 239, 219, .42));
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .8), 0 7px 18px rgba(23, 91, 62, .07);
+      backdrop-filter: blur(16px) saturate(135%);
+      -webkit-backdrop-filter: blur(16px) saturate(135%);
+      transition: color .3s ease, transform .3s ease, border-color .3s ease, background-color .3s ease, box-shadow .3s ease;
     }
 
     .nav a:after {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 100%;
-      bottom: 3px;
-      height: 2px;
-      border-radius: 2px;
-      background: var(--teal);
-      transition: right .35s cubic-bezier(.2, .7, .2, 1);
+      display: none;
     }
 
-    .nav a:hover:after,
-    .nav a:focus-visible:after {
-      right: 0;
+    .nav a:hover,
+    .nav a:focus-visible {
+      color: var(--teal-dark);
+      border-color: rgba(131, 187, 145, .72);
+      background: linear-gradient(145deg, rgba(255, 255, 255, .9), rgba(195, 231, 201, .7));
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .95), 0 11px 24px rgba(23, 91, 62, .14);
+      transform: translateY(-2px);
     }
 
     .header-phone,
@@ -401,6 +403,382 @@
       }
     }
   </style>
+  <style>
+    :root {
+      --ink: #17324a;
+      --muted: #506879;
+      --paper: #fffdf9;
+      --white: #ffffff;
+      --teal: #2fa38f;
+      --teal-dark: #17625e;
+      --coral: #f18a6d;
+      --line: rgba(143, 172, 188, .3);
+      --shadow: 0 24px 70px rgba(41, 85, 111, .11);
+      --glass-edge: rgba(255, 255, 255, .88);
+    }
+
+    body {
+      background-color: var(--paper);
+      background-image: linear-gradient(135deg, rgba(225, 244, 249, .72), transparent 38%), linear-gradient(315deg, rgba(255, 237, 224, .56), transparent 42%), repeating-linear-gradient(0deg, rgba(106, 151, 176, .028) 0 1px, transparent 1px 26px), repeating-linear-gradient(90deg, rgba(106, 151, 176, .028) 0 1px, transparent 1px 26px);
+      background-size: auto, auto, 26px 26px, 26px 26px;
+      color: var(--ink);
+      perspective: none;
+    }
+
+    body:after {
+      background: linear-gradient(115deg, rgba(255, 255, 255, .38), transparent 32%, rgba(164, 226, 215, .12) 68%, transparent);
+    }
+
+    .site-header {
+      background: rgba(255, 255, 255, .72);
+      border-bottom-color: rgba(126, 163, 184, .16);
+      box-shadow: 0 10px 30px rgba(41, 85, 111, .06), inset 0 -1px 0 rgba(255, 255, 255, .84);
+      backdrop-filter: blur(30px) saturate(155%);
+      -webkit-backdrop-filter: blur(30px) saturate(155%);
+    }
+
+    .header-inner {
+      min-height: 84px;
+    }
+
+    .brand {
+      color: var(--ink);
+    }
+
+    .brand-mark {
+      background: linear-gradient(145deg, #55b9a5, #4b96bb);
+      box-shadow: 5px 5px 0 rgba(92, 184, 179, .22), inset 0 1px 0 rgba(255, 255, 255, .55);
+    }
+
+    .nav {
+      gap: 8px;
+      color: var(--ink);
+    }
+
+    .nav a {
+      border-color: rgba(255, 255, 255, .82);
+      border-radius: 16px;
+      background: linear-gradient(145deg, rgba(255, 255, 255, .84), rgba(232, 244, 248, .5));
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .9), 0 8px 22px rgba(41, 85, 111, .07);
+      color: #355269;
+    }
+
+    .nav a:hover,
+    .nav a:focus-visible {
+      border-color: rgba(35, 143, 131, .48);
+      background: linear-gradient(145deg, rgba(255, 255, 255, .98), rgba(215, 243, 237, .82));
+      color: var(--teal-dark);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .98), 0 12px 26px rgba(35, 143, 131, .16);
+    }
+
+    .hero {
+      padding: 82px 0 88px;
+    }
+
+    .hero:before {
+      background: linear-gradient(145deg, rgba(185, 229, 239, .56), rgba(211, 243, 229, .42));
+      box-shadow: -30px 36px 90px rgba(83, 169, 185, .16);
+    }
+
+    .hero:after {
+      border-color: rgba(240, 120, 97, .23);
+    }
+
+    .eyebrow {
+      color: var(--teal-dark);
+    }
+
+    h1 {
+      color: #17324a;
+      font-size: clamp(42px, 5.8vw, 70px);
+      letter-spacing: -.055em;
+    }
+
+    .hero-copy > p,
+    .section-heading p {
+      color: var(--muted);
+    }
+
+    .button {
+      min-height: 54px;
+      border-radius: 16px;
+    }
+
+    .button-primary {
+      background: linear-gradient(135deg, #f49778, #e9796d);
+      box-shadow: 0 14px 28px rgba(240, 120, 97, .22), inset 0 1px 0 rgba(255, 255, 255, .32);
+    }
+
+    .button-primary:hover {
+      background: linear-gradient(135deg, #eb7d67, #dc6763);
+      box-shadow: 0 18px 34px rgba(240, 120, 97, .3), inset 0 1px 0 rgba(255, 255, 255, .38);
+    }
+
+    .button-quiet {
+      border-color: rgba(255, 255, 255, .9);
+      background: rgba(255, 255, 255, .58);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .85), 0 8px 20px rgba(41, 85, 111, .06);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .trust-row span:before {
+      color: var(--teal);
+    }
+
+    .offer-card,
+    .contact-card {
+      border: 1px solid var(--glass-edge);
+      border-radius: 28px;
+      background: linear-gradient(145deg, rgba(255, 255, 255, .82), rgba(229, 244, 247, .54));
+      box-shadow: var(--shadow), inset 0 1px 0 rgba(255, 255, 255, .94);
+      backdrop-filter: blur(30px) saturate(150%);
+      -webkit-backdrop-filter: blur(30px) saturate(150%);
+    }
+
+    .offer-card:after,
+    .contact-card:after,
+    .card:after {
+      border-top-color: rgba(255, 255, 255, .9);
+      border-left-color: rgba(255, 255, 255, .56);
+    }
+
+    .offer-card:before {
+      height: 5px;
+      border-radius: 0 0 5px 5px;
+      background: linear-gradient(90deg, var(--coral), #f5b16f);
+    }
+
+    .offer-stamp {
+      border: 1px solid rgba(35, 143, 131, .18);
+      border-radius: 999px;
+      background: rgba(218, 246, 238, .78);
+      color: var(--teal-dark);
+    }
+
+    .offer-result {
+      border-color: rgba(91, 187, 176, .22);
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(220, 247, 239, .84), rgba(201, 234, 241, .66));
+    }
+
+    .offer-result strong {
+      color: var(--teal-dark);
+    }
+
+    .stats {
+      width: min(1160px, calc(100% - 40px));
+      margin: 0 auto;
+      border: 1px solid rgba(255, 255, 255, .8);
+      border-radius: 24px;
+      background: rgba(255, 255, 255, .5);
+      box-shadow: 0 16px 38px rgba(41, 85, 111, .08), inset 0 1px 0 rgba(255, 255, 255, .86);
+      backdrop-filter: blur(22px) saturate(140%);
+      -webkit-backdrop-filter: blur(22px) saturate(140%);
+    }
+
+    .stat {
+      border-right-color: rgba(151, 181, 199, .24);
+    }
+
+    .stat strong {
+      color: var(--teal);
+    }
+
+    #zakres {
+      background: transparent;
+    }
+
+    .section {
+      padding: 108px 0;
+    }
+
+    .section-heading h2,
+    .contact-info h2 {
+      color: #17324a;
+    }
+
+    .cards {
+      gap: 18px;
+    }
+
+    .card {
+      min-height: 270px;
+      border: 1px solid rgba(255, 255, 255, .84);
+      border-radius: 24px;
+      background: linear-gradient(145deg, rgba(255, 255, 255, .8), rgba(231, 244, 247, .54));
+      box-shadow: 0 16px 34px rgba(41, 85, 111, .08), inset 0 1px 0 rgba(255, 255, 255, .9);
+      backdrop-filter: blur(22px) saturate(135%);
+      -webkit-backdrop-filter: blur(22px) saturate(135%);
+    }
+
+    .card:hover {
+      border-color: rgba(35, 143, 131, .4);
+      box-shadow: 0 20px 40px rgba(41, 110, 130, .14), inset 0 1px 0 rgba(255, 255, 255, .98);
+    }
+
+    .card-icon {
+      border-radius: 14px;
+      background: linear-gradient(145deg, #d9f4ec, #d5edf7);
+      color: var(--teal-dark);
+    }
+
+    .process-section {
+      background: linear-gradient(135deg, #28526a, #328184 54%, #3b9c8e);
+    }
+
+    .steps {
+      gap: 14px;
+      background: transparent;
+    }
+
+    .step {
+      border: 1px solid rgba(255, 255, 255, .16);
+      border-radius: 22px;
+      background: rgba(255, 255, 255, .1);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .14), 0 14px 28px rgba(7, 47, 65, .16);
+    }
+
+    .step:hover {
+      background: rgba(255, 255, 255, .17);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .22), 0 20px 35px rgba(7, 47, 65, .22);
+    }
+
+    .step-number {
+      color: #ffb39c;
+    }
+
+    .conditions {
+      border-top-color: rgba(255, 255, 255, .2);
+    }
+
+    .condition-list li {
+      border-color: rgba(255, 255, 255, .17);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, .06);
+    }
+
+    .contact-section {
+      background: linear-gradient(135deg, rgba(222, 247, 240, .9), rgba(226, 242, 250, .88) 52%, rgba(255, 237, 227, .86));
+    }
+
+    .contact-phone {
+      color: var(--teal-dark);
+    }
+
+    input,
+    select {
+      min-height: 52px;
+      border-radius: 14px;
+      border-color: rgba(126, 163, 184, .32);
+      background: rgba(255, 255, 255, .58);
+    }
+
+    input:focus,
+    select:focus {
+      outline-color: rgba(35, 143, 131, .3);
+      border-color: var(--teal);
+    }
+
+    .call-now {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 9;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 54px;
+      padding: 0 18px;
+      border: 1px solid rgba(255, 255, 255, .84);
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(244, 151, 120, .94), rgba(222, 105, 99, .94));
+      color: #fff;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+      box-shadow: 0 16px 30px rgba(206, 101, 89, .24), inset 0 1px 0 rgba(255, 255, 255, .5);
+      backdrop-filter: blur(18px) saturate(135%);
+      -webkit-backdrop-filter: blur(18px) saturate(135%);
+      animation: float-call 4.5s ease-in-out infinite;
+    }
+
+    .call-now:before {
+      content: "☎";
+      display: grid;
+      place-items: center;
+      width: 25px;
+      height: 25px;
+      border: 1px solid rgba(255, 255, 255, .38);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .18);
+      font-size: 14px;
+    }
+
+    .call-now:hover,
+    .call-now:focus-visible {
+      background: linear-gradient(135deg, rgba(239, 133, 108, .98), rgba(211, 91, 91, .98));
+      box-shadow: 0 20px 34px rgba(206, 101, 89, .32), inset 0 1px 0 rgba(255, 255, 255, .58);
+      transform: translateY(-3px);
+    }
+
+    @keyframes float-call {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
+    @media (max-width: 650px) {
+      .header-inner {
+        min-height: 68px;
+        padding: 10px 0 12px;
+        flex-wrap: wrap;
+        gap: 10px 16px;
+      }
+
+      .nav {
+        display: flex;
+        order: 3;
+        width: 100%;
+        overflow-x: auto;
+        padding: 2px 2px 5px;
+        scrollbar-width: none;
+      }
+
+      .nav::-webkit-scrollbar {
+        display: none;
+      }
+
+      .nav a {
+        flex: 0 0 auto;
+        padding: 8px 13px;
+        border-radius: 13px;
+        font-size: 12px;
+      }
+
+      .stats {
+        width: calc(100% - 28px);
+        border-radius: 20px;
+      }
+
+      .hero {
+        padding-top: 62px;
+      }
+
+      .offer-card,
+      .contact-card {
+        border-radius: 22px;
+      }
+
+      .call-now {
+        right: 14px;
+        bottom: 14px;
+        min-height: 50px;
+        padding: 0 15px;
+        border-radius: 16px;
+      }
+    }
+  </style>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Przejdź do treści</a>
@@ -412,6 +790,6 @@
     <section id="proces" class="section process-section"><div class="container"><div class="section-heading"><span class="eyebrow">Prosty proces</span><h2>Trzy kroki do dodatkowych pieniędzy.</h2><p>Wysyłasz dokumenty, poznajesz ofertę i decydujesz. Całą resztą zajmujemy się my.</p></div><div class="steps"><article class="step"><span class="step-number">01 / DOKUMENTY</span><h3>Prześlij kosztorys</h3><p>Wyślij kosztorys lub decyzję ubezpieczyciela. Zdjęcia dokumentów wystarczą.</p></article><article class="step"><span class="step-number">02 / OFERTA</span><h3>Poznaj dopłatę</h3><p>Bezpłatnie analizujemy sprawę i przedstawiamy jasną kwotę bez zobowiązań.</p></article><article class="step"><span class="step-number">03 / WYPŁATA</span><h3>Odbierz przelew</h3><p>Po podpisaniu prostej umowy cesji przelew trafia na Twoje konto do 48 godzin.</p></article></div><div class="conditions"><h3>Twoja sprawa może się kwalifikować, jeśli:</h3><ul class="condition-list"><li><strong>Szkoda komunikacyjna</strong>Kolizja lub wypadek z OC albo AC.</li><li><strong>Ostatnie 36 miesięcy</strong>Decyzja ubezpieczyciela nie jest starsza niż 3 lata.</li><li><strong>Wariant kosztorysowy</strong>Odszkodowanie rozliczono na podstawie kosztorysu.</li><li><strong>Brak ugody</strong>Nie podpisano ostatecznej ugody z ubezpieczycielem.</li></ul></div></div></section>
     <section id="kontakt" class="section contact-section"><div class="container contact-grid"><div class="contact-info"><span class="eyebrow">Bezpłatna weryfikacja</span><h2>Sprawdźmy, ile możesz odzyskać.</h2><p>Wypełnij krótki formularz. Oddzwonimy, odpowiemy na pytania i powiemy, jakie dokumenty będą potrzebne.</p><a class="contact-phone" href="tel:+48739036885">☎ +48 739 036 885</a></div><div class="contact-card"><form name="kontakt" method="POST" data-netlify="true" netlify-honeypot="bot-field"><input type="hidden" name="form-name" value="kontakt"><p hidden><label>Nie wypełniaj: <input name="bot-field"></label></p><div class="form-grid"><div class="field"><label for="imie">Imię</label><input id="imie" name="imie" type="text" placeholder="np. Grzegorz" required></div><div class="field"><label for="telefon">Telefon</label><input id="telefon" name="telefon" type="tel" placeholder="np. 512 340 987" required></div><div class="field field-full"><label for="rodzaj-szkody">Rodzaj szkody</label><select id="rodzaj-szkody" name="rodzaj-szkody"><option>Szkoda z OC sprawcy</option><option>Szkoda z własnego AC</option><option>Szkoda całkowita (OC/AC)</option><option>Nie wiem, potrzebuję porady</option></select></div></div><button class="button button-primary form-button" type="submit">Poproś o bezpłatną wycenę</button><p class="form-note">Wysyłając formularz, zgadzasz się na kontakt w celu przedstawienia wyceny. Analiza jest bezpłatna i niezobowiązująca.</p></form></div></div></section>
   </main>
-  <footer class="footer"><div class="container footer-inner"><a href="#start" class="brand"><span class="brand-mark">K</span><span>KasaZaSzkodę.pl</span></a><p>© 2026 KasaZaSzkodę.pl · Odkup szkód OC i AC</p></div></footer><a class="call-now" href="tel:+48739036885">Zadzwoń teraz</a>
+  <footer class="footer"><div class="container footer-inner"><a href="#start" class="brand"><span class="brand-mark">K</span><span>KasaZaSzkodę.pl</span></a><p>© 2026 KasaZaSzkodę.pl · Odkup szkód OC i AC</p></div></footer><a class="call-now" href="tel:+48739036885">Zadzwoń · +48 739 036 885</a>
 </body>
 </html>
